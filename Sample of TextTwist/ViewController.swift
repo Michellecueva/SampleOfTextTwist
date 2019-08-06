@@ -73,8 +73,25 @@ class ViewController: UIViewController, UITextFieldDelegate {
             }
         }
         
-        
         return true
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        let arrayletters = Array(currentGame?.letters ?? "")//
+        
+        //if the last letter typed is not in the arrayLetters , the letter should not appear
+        
+        print(arrayletters)
+        
+        
+            if arrayletters.contains(Character(string)) || string == "" {// this says only run this if the last letter matches a letter in the array or if the last letter is an empty string. If you backspace then it tries to replace the last character with an empty string 
+                return true
+            } else {
+                print("Cannot use the letter \(string)")
+                return false
+            }
+        
     }
     
     
